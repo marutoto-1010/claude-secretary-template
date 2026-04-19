@@ -123,19 +123,40 @@ your-project/
 
 ### 3.2 ファイルのコピー
 
-元リポジトリから上記5つのスクリプトファイルをコピーしてください:
+公開テンプレートリポジトリ [marutoto-1010/claude-secretary-template](https://github.com/marutoto-1010/claude-secretary-template) から必要なファイルを取得してください。
+
+#### 方法A: 新規プロジェクトとして clone する（推奨）
 
 ```bash
-# tools/ 配下の4ファイル
-cp tools/slack-dispatcher.js   <your-project>/tools/
-cp tools/slack-secretary.js    <your-project>/tools/
-cp tools/slack-notify.js       <your-project>/tools/
-cp tools/slack-inbox.js        <your-project>/tools/
-
-# scripts/ 配下の2ファイル
-cp scripts/secretary-session.bat <your-project>/scripts/
-cp scripts/secretary-loop.js     <your-project>/scripts/
+git clone https://github.com/marutoto-1010/claude-secretary-template.git <your-project>
+cd <your-project>
 ```
+
+これで `tools/`, `scripts/`, `docs/` が揃います。
+
+#### 方法B: 既存プロジェクトにファイルだけ取り込む
+
+既に Claude Code プロジェクトが存在する場合は、テンプレートを一時 clone して必要ファイルのみコピーします:
+
+```bash
+# 一時ディレクトリに clone
+git clone https://github.com/marutoto-1010/claude-secretary-template.git /tmp/secretary-template
+
+# 既存プロジェクトにコピー
+cp /tmp/secretary-template/tools/slack-dispatcher.js   <your-project>/tools/
+cp /tmp/secretary-template/tools/slack-secretary.js    <your-project>/tools/
+cp /tmp/secretary-template/tools/slack-notify.js       <your-project>/tools/
+cp /tmp/secretary-template/tools/slack-inbox.js        <your-project>/tools/
+cp /tmp/secretary-template/scripts/secretary-session.bat <your-project>/scripts/
+cp /tmp/secretary-template/scripts/secretary-loop.js     <your-project>/scripts/
+
+# 一時ディレクトリを削除
+rm -rf /tmp/secretary-template
+```
+
+#### 更新の追従
+
+テンプレートリポジトリに改善が入った際は、方法Aなら `git pull` で追従、方法Bなら再度 clone して差分を取り込みます。
 
 ---
 
